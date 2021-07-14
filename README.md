@@ -18,7 +18,7 @@ The GODDeSS(Geant4 Objects for Detailed Detectors with Scintillators and SiPMs) 
 * [Documantation Page](https://git.rwth-aachen.de/3pia/forge/goddess-package/-/wikis/Documentation) 
 * [Git Page](https://git.rwth-aachen.de/3pia/forge/goddess-package)
 
-Eventhough it can be installed externally, the source of GODDeSS(v4.3) has been added to the example under *externals/GODDeSS* folder and it will be installed automatically.
+Even though it can be installed externally, the source of GODDeSS(v4.3) has been added to the example under the *externals/GODDeSS* folder and it will be installed automatically.
 
 ## Requirements
 The programs below have to be installed before running the example. Otherwise, the code will not compile.
