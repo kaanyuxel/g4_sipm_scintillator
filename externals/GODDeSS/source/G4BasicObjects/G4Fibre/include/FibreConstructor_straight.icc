@@ -1,0 +1,846 @@
+/*
+ * author:      Erik Dietz-Laursonn
+ * institution: Physics Institute 3A, RWTH Aachen University, Aachen, Germany
+ * copyright:   Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+ */
+
+
+// class variables begin with capital letters, local variables with small letters
+
+
+
+// These are the overloaded functions. They are calling the main function using default values for the parameters which are not specified.
+
+
+
+// option to create replications: the first object will be placed at transf_relative_to_reference, the other number_of_replications - 1 objects will be placed at replication_transf relative to the previous one
+/// <b> >>> construct replications of a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4Fibre *> ConstructFibres( G4String fibre_property_file,
+				   G4VPhysicalVolume* mother_volume,
+				   G4double length,
+				   G4int number_of_replications,
+				   G4Transform3D replication_transf
+				 )
+{
+	return ConstructFibres( fibre_property_file,
+				mother_volume,
+				length,
+				number_of_replications,
+				replication_transf,
+				FibreTransformation_rel,
+				ReferenceVolume_physical,
+				ReferenceVolume_transformation,
+				FibreNamePrefix,
+				OnlyInsideMother,
+				CutAuntVolumesWithDaughters,
+				Reflectivity_startPoint,
+				Roughness_startPoint,
+				Reflectivity_endPoint,
+				Roughness_endPoint,
+				Glued,
+				OpticalCementPropertyFile,
+				EmbedmentProfile,
+				WhereIsEmbedmentToBeFlushWithFibre,
+				VolumesWithEmbedment,
+				ConstructSensitiveDetector
+			      );
+}
+
+/// <b> >>> construct replications of a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4Fibre *> ConstructFibres( G4String fibre_property_file,
+				   G4VPhysicalVolume* mother_volume,
+				   G4double length,
+				   G4int number_of_replications,
+				   G4Transform3D replication_transf,
+				   G4Transform3D transf_relative_to_reference
+				 )
+{
+	return ConstructFibres( fibre_property_file,
+				mother_volume,
+				length,
+				number_of_replications,
+				replication_transf,
+				transf_relative_to_reference,
+				ReferenceVolume_physical,
+				ReferenceVolume_transformation,
+				FibreNamePrefix,
+				OnlyInsideMother,
+				CutAuntVolumesWithDaughters,
+				Reflectivity_startPoint,
+				Roughness_startPoint,
+				Reflectivity_endPoint,
+				Roughness_endPoint,
+				Glued,
+				OpticalCementPropertyFile,
+				EmbedmentProfile,
+				WhereIsEmbedmentToBeFlushWithFibre,
+				VolumesWithEmbedment,
+				ConstructSensitiveDetector
+			      );
+}
+
+/// <b> >>> construct replications of a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4Fibre *> ConstructFibres( G4String fibre_property_file,
+				   G4VPhysicalVolume* mother_volume,
+				   G4double length,
+				   G4int number_of_replications,
+				   G4Transform3D replication_transf,
+				   G4Transform3D transf_relative_to_reference,
+				   G4VPhysicalVolume* reference_volume
+				 )
+{
+	return ConstructFibres( fibre_property_file,
+				mother_volume,
+				length,
+				number_of_replications,
+				replication_transf,
+				transf_relative_to_reference,
+				reference_volume,
+				ReferenceVolume_transformation,
+				FibreNamePrefix,
+				OnlyInsideMother,
+				CutAuntVolumesWithDaughters,
+				Reflectivity_startPoint,
+				Roughness_startPoint,
+				Reflectivity_endPoint,
+				Roughness_endPoint,
+				Glued,
+				OpticalCementPropertyFile,
+				EmbedmentProfile,
+				WhereIsEmbedmentToBeFlushWithFibre,
+				VolumesWithEmbedment,
+				ConstructSensitiveDetector
+			      );
+}
+
+/// <b> >>> construct replications of a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4Fibre *> ConstructFibres( G4String fibre_property_file,
+				   G4VPhysicalVolume* mother_volume,
+				   G4double length,
+				   G4int number_of_replications,
+				   G4Transform3D replication_transf,
+				   G4Transform3D transf_relative_to_reference,
+				   G4VPhysicalVolume* reference_volume,
+				   G4Transform3D reference_volume_transformation
+				 )
+{
+	return ConstructFibres( fibre_property_file,
+				mother_volume,
+				length,
+				number_of_replications,
+				replication_transf,
+				transf_relative_to_reference,
+				reference_volume,
+				reference_volume_transformation,
+				FibreNamePrefix,
+				OnlyInsideMother,
+				CutAuntVolumesWithDaughters,
+				Reflectivity_startPoint,
+				Roughness_startPoint,
+				Reflectivity_endPoint,
+				Roughness_endPoint,
+				Glued,
+				OpticalCementPropertyFile,
+				EmbedmentProfile,
+				WhereIsEmbedmentToBeFlushWithFibre,
+				VolumesWithEmbedment,
+				ConstructSensitiveDetector
+			      );
+}
+
+/// <b> >>> construct replications of a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4Fibre *> ConstructFibres( G4String fibre_property_file,
+				   G4VPhysicalVolume* mother_volume,
+				   G4double length,
+				   G4int number_of_replications,
+				   G4Transform3D replication_transf,
+				   G4Transform3D transf_relative_to_reference,
+				   G4VPhysicalVolume* reference_volume,
+				   G4Transform3D reference_volume_transformation,
+				   G4String fibre_name_prefix
+				 )
+{
+	return ConstructFibres( fibre_property_file,
+				mother_volume,
+				length,
+				number_of_replications,
+				replication_transf,
+				transf_relative_to_reference,
+				reference_volume,
+				reference_volume_transformation,
+				fibre_name_prefix,
+				OnlyInsideMother,
+				CutAuntVolumesWithDaughters,
+				Reflectivity_startPoint,
+				Roughness_startPoint,
+				Reflectivity_endPoint,
+				Roughness_endPoint,
+				Glued,
+				OpticalCementPropertyFile,
+				EmbedmentProfile,
+				WhereIsEmbedmentToBeFlushWithFibre,
+				VolumesWithEmbedment,
+				ConstructSensitiveDetector
+			      );
+}
+
+/// <b> >>> construct replications of a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4Fibre *> ConstructFibres( G4String fibre_property_file,
+				   G4VPhysicalVolume* mother_volume,
+				   G4double length,
+				   G4int number_of_replications,
+				   G4Transform3D replication_transf,
+				   G4Transform3D transf_relative_to_reference,
+				   G4VPhysicalVolume* reference_volume,
+				   G4Transform3D reference_volume_transformation,
+				   G4String fibre_name_prefix,
+				   G4bool onlyInsideMother
+				 )
+{
+	return ConstructFibres( fibre_property_file,
+				mother_volume,
+				length,
+				number_of_replications,
+				replication_transf,
+				transf_relative_to_reference,
+				reference_volume,
+				reference_volume_transformation,
+				fibre_name_prefix,
+				onlyInsideMother,
+				CutAuntVolumesWithDaughters,
+				Reflectivity_startPoint,
+				Roughness_startPoint,
+				Reflectivity_endPoint,
+				Roughness_endPoint,
+				Glued,
+				OpticalCementPropertyFile,
+				EmbedmentProfile,
+				WhereIsEmbedmentToBeFlushWithFibre,
+				VolumesWithEmbedment,
+				ConstructSensitiveDetector
+			      );
+}
+
+/// <b> >>> construct replications of a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4Fibre *> ConstructFibres( G4String fibre_property_file,
+				   G4VPhysicalVolume* mother_volume,
+				   G4double length,
+				   G4int number_of_replications,
+				   G4Transform3D replication_transf,
+				   G4Transform3D transf_relative_to_reference,
+				   G4VPhysicalVolume* reference_volume,
+				   G4Transform3D reference_volume_transformation,
+				   G4String fibre_name_prefix,
+				   G4bool onlyInsideMother,
+				   G4bool cutAuntVolumesWithDaughters
+				 )
+{
+	return ConstructFibres( fibre_property_file,
+				mother_volume,
+				length,
+				number_of_replications,
+				replication_transf,
+				transf_relative_to_reference,
+				reference_volume,
+				reference_volume_transformation,
+				fibre_name_prefix,
+				onlyInsideMother,
+				cutAuntVolumesWithDaughters,
+				Reflectivity_startPoint,
+				Roughness_startPoint,
+				Reflectivity_endPoint,
+				Roughness_endPoint,
+				Glued,
+				OpticalCementPropertyFile,
+				EmbedmentProfile,
+				WhereIsEmbedmentToBeFlushWithFibre,
+				VolumesWithEmbedment,
+				ConstructSensitiveDetector
+			      );
+}
+
+/// <b> >>> construct replications of a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4Fibre *> ConstructFibres( G4String fibre_property_file,
+				   G4VPhysicalVolume* mother_volume,
+				   G4double length,
+				   G4int number_of_replications,
+				   G4Transform3D replication_transf,
+				   G4Transform3D transf_relative_to_reference,
+				   G4VPhysicalVolume* reference_volume,
+				   G4Transform3D reference_volume_transformation,
+				   G4String fibre_name_prefix,
+				   G4bool onlyInsideMother,
+				   G4bool cutAuntVolumesWithDaughters,
+				   G4double startPoint_reflectivity,
+				   G4double startPoint_sigmaAlpha
+				 )
+{
+	return ConstructFibres( fibre_property_file,
+				mother_volume,
+				length,
+				number_of_replications,
+				replication_transf,
+				transf_relative_to_reference,
+				reference_volume,
+				reference_volume_transformation,
+				fibre_name_prefix,
+				onlyInsideMother,
+				cutAuntVolumesWithDaughters,
+				startPoint_reflectivity,
+				startPoint_sigmaAlpha,
+				Reflectivity_endPoint,
+				Roughness_endPoint,
+				Glued,
+				OpticalCementPropertyFile,
+				EmbedmentProfile,
+				WhereIsEmbedmentToBeFlushWithFibre,
+				VolumesWithEmbedment,
+				ConstructSensitiveDetector
+			      );
+}
+
+/// <b> >>> construct replications of a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4Fibre *> ConstructFibres( G4String fibre_property_file,
+				   G4VPhysicalVolume* mother_volume,
+				   G4double length,
+				   G4int number_of_replications,
+				   G4Transform3D replication_transf,
+				   G4Transform3D transf_relative_to_reference,
+				   G4VPhysicalVolume* reference_volume,
+				   G4Transform3D reference_volume_transformation,
+				   G4String fibre_name_prefix,
+				   G4bool onlyInsideMother,
+				   G4bool cutAuntVolumesWithDaughters,
+				   G4double startPoint_reflectivity,
+				   G4double startPoint_sigmaAlpha,
+				   G4double endPoint_reflectivity,
+				   G4double endPoint_sigmaAlpha
+				 )
+{
+	return ConstructFibres( fibre_property_file,
+				mother_volume,
+				length,
+				number_of_replications,
+				replication_transf,
+				transf_relative_to_reference,
+				reference_volume,
+				reference_volume_transformation,
+				fibre_name_prefix,
+				onlyInsideMother,
+				cutAuntVolumesWithDaughters,
+				startPoint_reflectivity,
+				startPoint_sigmaAlpha,
+				endPoint_reflectivity,
+				endPoint_sigmaAlpha,
+				Glued,
+				OpticalCementPropertyFile,
+				EmbedmentProfile,
+				WhereIsEmbedmentToBeFlushWithFibre,
+				VolumesWithEmbedment,
+				ConstructSensitiveDetector
+			      );
+}
+
+/// <b> >>> construct replications of a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4Fibre *> ConstructFibres( G4String fibre_property_file,
+				   G4VPhysicalVolume* mother_volume,
+				   G4double length,
+				   G4int number_of_replications,
+				   G4Transform3D replication_transf,
+				   G4Transform3D transf_relative_to_reference,
+				   G4VPhysicalVolume* reference_volume,
+				   G4Transform3D reference_volume_transformation,
+				   G4String fibre_name_prefix,
+				   G4bool onlyInsideMother,
+				   G4bool cutAuntVolumesWithDaughters,
+				   G4double startPoint_reflectivity,
+				   G4double startPoint_sigmaAlpha,
+				   G4double endPoint_reflectivity,
+				   G4double endPoint_sigmaAlpha,
+				   G4bool glued,
+				   G4String glue_property_file,
+				   G4String embedment_profile,
+				   G4String where_is_embedment_to_be_flush_with_fibre,
+				   std::vector<G4VPhysicalVolume *> volumes_with_embedment
+				 )
+{
+	return ConstructFibres( fibre_property_file,
+				mother_volume,
+				length,
+				number_of_replications,
+				replication_transf,
+				transf_relative_to_reference,
+				reference_volume,
+				reference_volume_transformation,
+				fibre_name_prefix,
+				onlyInsideMother,
+				cutAuntVolumesWithDaughters,
+				startPoint_reflectivity,
+				startPoint_sigmaAlpha,
+				endPoint_reflectivity,
+				endPoint_sigmaAlpha,
+				glued,
+				glue_property_file,
+				embedment_profile,
+				where_is_embedment_to_be_flush_with_fibre,
+				volumes_with_embedment,
+				ConstructSensitiveDetector
+			      );
+}
+
+
+
+// option to only one object
+/// <b> >>> construct a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Fibre * ConstructFibre( G4String fibre_property_file,
+			  G4VPhysicalVolume* mother_volume,
+			  G4double length
+			)
+{
+	return ConstructFibre( fibre_property_file,
+			       mother_volume,
+			       length,
+			       FibreTransformation_rel,
+			       ReferenceVolume_physical,
+			       ReferenceVolume_transformation,
+			       FibreNamePrefix,
+			       OnlyInsideMother,
+			       CutAuntVolumesWithDaughters,
+			       Reflectivity_startPoint,
+			       Roughness_startPoint,
+			       Reflectivity_endPoint,
+			       Roughness_endPoint,
+			       Glued,
+			       OpticalCementPropertyFile,
+			       EmbedmentProfile,
+			       WhereIsEmbedmentToBeFlushWithFibre,
+			       VolumesWithEmbedment,
+			       ConstructSensitiveDetector
+			     );
+}
+
+/// <b> >>> construct a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Fibre * ConstructFibre( G4String fibre_property_file,
+			  G4VPhysicalVolume* mother_volume,
+			  G4double length,
+			  G4Transform3D transf_relative_to_reference
+			)
+{
+	return ConstructFibre( fibre_property_file,
+			       mother_volume,
+			       length,
+			       transf_relative_to_reference,
+			       ReferenceVolume_physical,
+			       ReferenceVolume_transformation,
+			       FibreNamePrefix,
+			       OnlyInsideMother,
+			       CutAuntVolumesWithDaughters,
+			       Reflectivity_startPoint,
+			       Roughness_startPoint,
+			       Reflectivity_endPoint,
+			       Roughness_endPoint,
+			       Glued,
+			       OpticalCementPropertyFile,
+			       EmbedmentProfile,
+			       WhereIsEmbedmentToBeFlushWithFibre,
+			       VolumesWithEmbedment,
+			       ConstructSensitiveDetector
+			     );
+}
+
+/// <b> >>> construct a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Fibre * ConstructFibre( G4String fibre_property_file,
+			  G4VPhysicalVolume* mother_volume,
+			  G4double length,
+			  G4Transform3D transf_relative_to_reference,
+			  G4VPhysicalVolume* reference_volume
+			)
+{
+	return ConstructFibre( fibre_property_file,
+			       mother_volume,
+			       length,
+			       transf_relative_to_reference,
+			       reference_volume,
+			       ReferenceVolume_transformation,
+			       FibreNamePrefix,
+			       OnlyInsideMother,
+			       CutAuntVolumesWithDaughters,
+			       Reflectivity_startPoint,
+			       Roughness_startPoint,
+			       Reflectivity_endPoint,
+			       Roughness_endPoint,
+			       Glued,
+			       OpticalCementPropertyFile,
+			       EmbedmentProfile,
+			       WhereIsEmbedmentToBeFlushWithFibre,
+			       VolumesWithEmbedment,
+			       ConstructSensitiveDetector
+			     );
+}
+
+/// <b> >>> construct a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Fibre * ConstructFibre( G4String fibre_property_file,
+			  G4VPhysicalVolume* mother_volume,
+			  G4double length,
+			  G4Transform3D transf_relative_to_reference,
+			  G4VPhysicalVolume* reference_volume,
+			  G4Transform3D reference_volume_transformation
+			)
+{
+	return ConstructFibre( fibre_property_file,
+			       mother_volume,
+			       length,
+			       transf_relative_to_reference,
+			       reference_volume,
+			       reference_volume_transformation,
+			       FibreNamePrefix,
+			       OnlyInsideMother,
+			       CutAuntVolumesWithDaughters,
+			       Reflectivity_startPoint,
+			       Roughness_startPoint,
+			       Reflectivity_endPoint,
+			       Roughness_endPoint,
+			       Glued,
+			       OpticalCementPropertyFile,
+			       EmbedmentProfile,
+			       WhereIsEmbedmentToBeFlushWithFibre,
+			       VolumesWithEmbedment,
+			       ConstructSensitiveDetector
+			     );
+}
+
+/// <b> >>> construct a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Fibre * ConstructFibre( G4String fibre_property_file,
+			  G4VPhysicalVolume* mother_volume,
+			  G4double length,
+			  G4Transform3D transf_relative_to_reference,
+			  G4VPhysicalVolume* reference_volume,
+			  G4Transform3D reference_volume_transformation,
+			  G4String fibre_name_prefix
+			)
+{
+	return ConstructFibre( fibre_property_file,
+			       mother_volume,
+			       length,
+			       transf_relative_to_reference,
+			       reference_volume,
+			       reference_volume_transformation,
+			       fibre_name_prefix,
+			       OnlyInsideMother,
+			       CutAuntVolumesWithDaughters,
+			       Reflectivity_startPoint,
+			       Roughness_startPoint,
+			       Reflectivity_endPoint,
+			       Roughness_endPoint,
+			       Glued,
+			       OpticalCementPropertyFile,
+			       EmbedmentProfile,
+			       WhereIsEmbedmentToBeFlushWithFibre,
+			       VolumesWithEmbedment,
+			       ConstructSensitiveDetector
+			     );
+}
+
+/// <b> >>> construct a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Fibre * ConstructFibre( G4String fibre_property_file,
+			  G4VPhysicalVolume* mother_volume,
+			  G4double length,
+			  G4Transform3D transf_relative_to_reference,
+			  G4VPhysicalVolume* reference_volume,
+			  G4Transform3D reference_volume_transformation,
+			  G4String fibre_name_prefix,
+			  G4bool onlyInsideMother
+			)
+{
+	return ConstructFibre( fibre_property_file,
+			       mother_volume,
+			       length,
+			       transf_relative_to_reference,
+			       reference_volume,
+			       reference_volume_transformation,
+			       fibre_name_prefix,
+			       onlyInsideMother,
+			       CutAuntVolumesWithDaughters,
+			       Reflectivity_startPoint,
+			       Roughness_startPoint,
+			       Reflectivity_endPoint,
+			       Roughness_endPoint,
+			       Glued,
+			       OpticalCementPropertyFile,
+			       EmbedmentProfile,
+			       WhereIsEmbedmentToBeFlushWithFibre,
+			       VolumesWithEmbedment,
+			       ConstructSensitiveDetector
+			     );
+}
+
+/// <b> >>> construct a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Fibre * ConstructFibre( G4String fibre_property_file,
+			  G4VPhysicalVolume* mother_volume,
+			  G4double length,
+			  G4Transform3D transf_relative_to_reference,
+			  G4VPhysicalVolume* reference_volume,
+			  G4Transform3D reference_volume_transformation,
+			  G4String fibre_name_prefix,
+			  G4bool onlyInsideMother,
+			  G4bool cutAuntVolumesWithDaughters
+			)
+{
+	return ConstructFibre( fibre_property_file,
+			       mother_volume,
+			       length,
+			       transf_relative_to_reference,
+			       reference_volume,
+			       reference_volume_transformation,
+			       fibre_name_prefix,
+			       onlyInsideMother,
+			       cutAuntVolumesWithDaughters,
+			       Reflectivity_startPoint,
+			       Roughness_startPoint,
+			       Reflectivity_endPoint,
+			       Roughness_endPoint,
+			       Glued,
+			       OpticalCementPropertyFile,
+			       EmbedmentProfile,
+			       WhereIsEmbedmentToBeFlushWithFibre,
+			       VolumesWithEmbedment,
+			       ConstructSensitiveDetector
+			     );
+}
+
+/// <b> >>> construct a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Fibre * ConstructFibre( G4String fibre_property_file,
+			  G4VPhysicalVolume* mother_volume,
+			  G4double length,
+			  G4Transform3D transf_relative_to_reference,
+			  G4VPhysicalVolume* reference_volume,
+			  G4Transform3D reference_volume_transformation,
+			  G4String fibre_name_prefix,
+			  G4bool onlyInsideMother,
+			  G4bool cutAuntVolumesWithDaughters,
+			  G4double startPoint_reflectivity,
+			  G4double startPoint_sigmaAlpha
+			)
+{
+	return ConstructFibre( fibre_property_file,
+			       mother_volume,
+			       length,
+			       transf_relative_to_reference,
+			       reference_volume,
+			       reference_volume_transformation,
+			       fibre_name_prefix,
+			       onlyInsideMother,
+			       cutAuntVolumesWithDaughters,
+			       startPoint_reflectivity,
+			       startPoint_sigmaAlpha,
+			       Reflectivity_endPoint,
+			       Roughness_endPoint,
+			       Glued,
+			       OpticalCementPropertyFile,
+			       EmbedmentProfile,
+			       WhereIsEmbedmentToBeFlushWithFibre,
+			       VolumesWithEmbedment,
+			       ConstructSensitiveDetector
+			     );
+}
+
+/// <b> >>> construct a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Fibre * ConstructFibre( G4String fibre_property_file,
+			  G4VPhysicalVolume* mother_volume,
+			  G4double length,
+			  G4Transform3D transf_relative_to_reference,
+			  G4VPhysicalVolume* reference_volume,
+			  G4Transform3D reference_volume_transformation,
+			  G4String fibre_name_prefix,
+			  G4bool onlyInsideMother,
+			  G4bool cutAuntVolumesWithDaughters,
+			  G4double startPoint_reflectivity,
+			  G4double startPoint_sigmaAlpha,
+			  G4double endPoint_reflectivity,
+			  G4double endPoint_sigmaAlpha
+			)
+{
+	return ConstructFibre( fibre_property_file,
+			       mother_volume,
+			       length,
+			       transf_relative_to_reference,
+			       reference_volume,
+			       reference_volume_transformation,
+			       fibre_name_prefix,
+			       onlyInsideMother,
+			       cutAuntVolumesWithDaughters,
+			       startPoint_reflectivity,
+			       startPoint_sigmaAlpha,
+			       endPoint_reflectivity,
+			       endPoint_sigmaAlpha,
+			       Glued,
+			       OpticalCementPropertyFile,
+			       EmbedmentProfile,
+			       WhereIsEmbedmentToBeFlushWithFibre,
+			       VolumesWithEmbedment,
+			       ConstructSensitiveDetector
+			     );
+}
+
+/// <b> >>> construct a STRAIGHT fibre with a given LENGTH and TRANSFORMATION </b>
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Fibre * ConstructFibre( G4String fibre_property_file,
+			  G4VPhysicalVolume* mother_volume,
+			  G4double length,
+			  G4Transform3D transf_relative_to_reference,
+			  G4VPhysicalVolume* reference_volume,
+			  G4Transform3D reference_volume_transformation,
+			  G4String fibre_name_prefix,
+			  G4bool onlyInsideMother,
+			  G4bool cutAuntVolumesWithDaughters,
+			  G4double startPoint_reflectivity,
+			  G4double startPoint_sigmaAlpha,
+			  G4double endPoint_reflectivity,
+			  G4double endPoint_sigmaAlpha,
+			  G4bool glued,
+			  G4String glue_property_file,
+			  G4String embedment_profile,
+			  G4String where_is_embedment_to_be_flush_with_fibre,
+			  std::vector<G4VPhysicalVolume *> volumes_with_embedment
+			)
+{
+	return ConstructFibre( fibre_property_file,
+			       mother_volume,
+			       length,
+			       transf_relative_to_reference,
+			       reference_volume,
+			       reference_volume_transformation,
+			       fibre_name_prefix,
+			       onlyInsideMother,
+			       cutAuntVolumesWithDaughters,
+			       startPoint_reflectivity,
+			       startPoint_sigmaAlpha,
+			       endPoint_reflectivity,
+			       endPoint_sigmaAlpha,
+			       glued,
+			       glue_property_file,
+			       embedment_profile,
+			       where_is_embedment_to_be_flush_with_fibre,
+			       volumes_with_embedment,
+			       ConstructSensitiveDetector
+			     );
+}

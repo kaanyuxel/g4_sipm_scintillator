@@ -1,0 +1,62 @@
+/*
+ * author:      Erik Dietz-Laursonn
+ * institution: Physics Institute 3A, RWTH Aachen University, Aachen, Germany
+ * copyright:   Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+ */
+
+
+#include <G4OpticalPhysics.hh>
+
+
+
+// class variables begin with capital letters, local variables with small letters
+
+
+
+/**
+ *  Function to registers the physics that is needed for the G4Fibre%s. Therefor, registerPhysics() is used.
+ *  <b> It has to be processed before the <em> physicsList </em> is initialised by the G4RunManager (runManager->SetUserInitialization(physicsList);)! </b>
+ *
+ *  The following physics constructors are registered:
+ */
+void FibreConstructor::LoadPhysicsList( G4VModularPhysicsList * physicsList,	/**< physics list which is used for the simulation */
+					int verbose				/**< verbosity level for adding the needed physics processes (specified in OpticalCouplingPhysicsList) to the physics list (default: 0) */
+				      )
+{
+// specify the particles and physics processes to be created in the initialisation process
+
+	/** - G4OpticalPhysics (from 2009)
+	 *    - creates the following particles:
+	 *      - bosons:  G4OpticalPhoton
+	 *    - and adds the following physical processes to these particles:
+	 *      - G4OpAbsorption, G4OpRayleigh, G4OpMieHG, G4OpBoundaryProcess, G4OpWLS, G4Scintillation, G4Cerenkov
+	 */
+// 	registerPhysics(physicsList, new G4OpticalPhysics(verbose));
+	G4OpticalPhysics* opticalPhysics = new G4OpticalPhysics(verbose);
+	opticalPhysics->SetWLSTimeProfile("exponential");
+// Configure (G4OpticalProcessIndex, G4bool)
+   // Configure the physics constructor to use/not use a selected process. This method can only be called in PreInit> phase (before execution of ConstructProcess). The process is not added to particle's process manager and so it cannot be re-activated later in Idle> phase with the command /process/activate.
+// SetProcessVerbose (G4int, G4int)
+// SetMaxNumPhotonsPerStep (G4int)
+// SetMaxBetaChangePerStep (G4double)
+// SetScintillationYieldFactor (G4double)
+// SetScintillationExcitationRatio (G4double)
+   // Called to set the scintillation exciation ratio, needed when the scintillation level excitation is different for different types of particles. This overwrites the YieldRatio obtained from the G4MaterialPropertiesTable.
+// SetScintillationByParticleType (G4bool)
+// AddScintillationSaturation (G4EmSaturation *)
+// SetTrackSecondariesFirst (G4OpticalProcessIndex, G4bool)
+	opticalPhysics->SetFiniteRiseTime(true);
+	registerPhysics(physicsList, opticalPhysics);
+}
+
+
+
+/**
+ *  Function that registers a physics constructor, if it has not already been registered.
+ */
+void FibreConstructor::registerPhysics( G4VModularPhysicsList * physicsList,	/**< physics list which is used for the simulation */
+					G4VPhysicsConstructor * physicsConstructor	/**< physics to be registered */
+				      )
+{
+	if(! physicsList->GetPhysics( physicsConstructor->GetPhysicsName() ) ) physicsList->RegisterPhysics(physicsConstructor);
+}

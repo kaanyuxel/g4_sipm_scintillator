@@ -1,0 +1,198 @@
+/*
+ * author:      Erik Dietz-Laursonn
+ * institution: Physics Institute 3A, RWTH Aachen University, Aachen, Germany
+ * copyright:   Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+ */
+
+
+// class variables begin with capital letters, local variables with small letters
+
+
+
+// These are the overloaded functions. They are calling the main function using default values for the parameters which are not specified.
+
+
+
+// option to create replications: the first object will be placed at transf_relative_to_reference, the other number_of_replications - 1 objects will be placed at replication_transf relative to the previous one
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4PhotonDetector *> ConstructPhotonDetectors( G4double edge_length,
+						      G4VPhysicalVolume* mother_volume,
+						      G4int number_of_replications,
+						      G4Transform3D replication_transf )
+{
+	return ConstructPhotonDetectors( edge_length,
+					 mother_volume,
+					 number_of_replications,
+					 replication_transf,
+					 PhotonDetectorName,
+					 SurfaceNormal_rel,
+					 SurfacePos_rel,
+					 ReferenceVolume_physical,
+					 ReferenceVolume_transformation );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4PhotonDetector *> ConstructPhotonDetectors( G4double edge_length,
+						      G4VPhysicalVolume* mother_volume,
+						      G4int number_of_replications,
+						      G4Transform3D replication_transf,
+						      G4String photon_detector_name )
+{
+	return ConstructPhotonDetectors( edge_length,
+					 mother_volume,
+					 number_of_replications,
+					 replication_transf,
+					 photon_detector_name,
+					 SurfaceNormal_rel,
+					 SurfacePos_rel,
+					 ReferenceVolume_physical,
+					 ReferenceVolume_transformation );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4PhotonDetector *> ConstructPhotonDetectors( G4double edge_length,
+						      G4VPhysicalVolume* mother_volume,
+						      G4int number_of_replications,
+						      G4Transform3D replication_transf,
+						      G4String photon_detector_name,
+						      G4ThreeVector sensitive_surface_normal_relative_to_reference,
+						      G4ThreeVector sensitive_surface_position_relative_to_reference )
+{
+	return ConstructPhotonDetectors( edge_length,
+					 mother_volume,
+					 number_of_replications,
+					 replication_transf,
+					 photon_detector_name,
+					 sensitive_surface_normal_relative_to_reference,
+					 sensitive_surface_position_relative_to_reference,
+					 ReferenceVolume_physical,
+					 ReferenceVolume_transformation );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4PhotonDetector *> ConstructPhotonDetectors( G4double edge_length,
+						      G4VPhysicalVolume* mother_volume,
+						      G4int number_of_replications,
+						      G4Transform3D replication_transf,
+						      G4String photon_detector_name,
+						      G4ThreeVector sensitive_surface_normal_relative_to_reference,
+						      G4ThreeVector sensitive_surface_position_relative_to_reference,
+						      G4VPhysicalVolume* reference_volume )
+{
+	return ConstructPhotonDetectors( edge_length,
+					 mother_volume,
+					 number_of_replications,
+					 replication_transf,
+					 photon_detector_name,
+					 sensitive_surface_normal_relative_to_reference,
+					 sensitive_surface_position_relative_to_reference,
+					 reference_volume,
+					 ReferenceVolume_transformation );
+}
+
+
+
+// option to only one object
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4PhotonDetector * ConstructPhotonDetector( G4double edge_length,
+					    G4VPhysicalVolume* mother_volume
+					  )
+{
+	return ConstructPhotonDetector( edge_length,
+				        mother_volume,
+				        PhotonDetectorName,
+				        SurfaceNormal_rel,
+				        SurfacePos_rel,
+				        ReferenceVolume_physical,
+				        ReferenceVolume_transformation );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4PhotonDetector * ConstructPhotonDetector( G4double edge_length,
+					    G4VPhysicalVolume* mother_volume,
+					    G4String photon_detector_name
+					  )
+{
+	return ConstructPhotonDetector( edge_length,
+				        mother_volume,
+				        photon_detector_name,
+				        SurfaceNormal_rel,
+				        SurfacePos_rel,
+				        ReferenceVolume_physical,
+				        ReferenceVolume_transformation );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4PhotonDetector * ConstructPhotonDetector( G4double edge_length,
+					    G4VPhysicalVolume* mother_volume,
+					    G4String photon_detector_name,
+					    G4ThreeVector sensitive_surface_normal_relative_to_reference,
+					    G4ThreeVector sensitive_surface_position_relative_to_reference
+					  )
+{
+	return ConstructPhotonDetector( edge_length,
+				        mother_volume,
+				        photon_detector_name,
+				        sensitive_surface_normal_relative_to_reference,
+				        sensitive_surface_position_relative_to_reference,
+				        ReferenceVolume_physical,
+				        ReferenceVolume_transformation );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4PhotonDetector * ConstructPhotonDetector( G4double edge_length,
+					    G4VPhysicalVolume* mother_volume,
+					    G4String photon_detector_name,
+					    G4ThreeVector sensitive_surface_normal_relative_to_reference,
+					    G4ThreeVector sensitive_surface_position_relative_to_reference,
+					    G4VPhysicalVolume* reference_volume
+					  )
+{
+	return ConstructPhotonDetector( edge_length,
+				        mother_volume,
+				        photon_detector_name,
+				        sensitive_surface_normal_relative_to_reference,
+				        sensitive_surface_position_relative_to_reference,
+				        reference_volume,
+				        ReferenceVolume_transformation );
+}

@@ -1,0 +1,311 @@
+/*
+ * author:      Erik Dietz-Laursonn
+ * institution: Physics Institute 3A, RWTH Aachen University, Aachen, Germany
+ * copyright:   Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+ */
+
+
+#include <G4EmStandardPhysics.hh>
+#include <G4EmLowEPPhysics.hh>
+#include <G4EmExtraPhysics.hh>
+#include <G4OpticalPhysics.hh>
+#include <G4DecayPhysics.hh>
+#include <G4StoppingPhysics.hh>
+#include <G4IonPhysics.hh>
+#include <G4IonElasticPhysics.hh>
+#include <G4ChargeExchangePhysics.hh>
+#include <G4HadronElasticPhysicsHP.hh>
+// #include <G4HadronDElasticPhysics.hh>
+// #include <G4HadronElasticPhysics.hh>
+// #include <G4HadronElasticPhysicsLEND.hh>
+// #include <G4HadronElasticPhysicsXS.hh>
+// #include <G4HadronHElasticPhysics.hh>
+#include <G4HadronPhysicsQGSP_BERT_HP.hh>
+// #include <G4HadronPhysicsQGSP_FTFP_BERT.hh>
+// #include <G4HadronPhysicsQGSP_BIC_HP.hh>
+// #include <G4HadronPhysicsQGSP_BIC.hh>
+// #include <G4HadronPhysicsQGSP_BERT.hh>
+// #include <G4HadronPhysicsQGS_BIC.hh>
+// #include <G4HadronPhysicsFTFP_BERT_TRV.hh>
+// #include <G4HadronPhysicsFTFP_BERT_HP.hh>
+// #include <G4HadronPhysicsFTFP_BERT.hh>
+// #include <G4HadronPhysicsFTF_BIC.hh>
+// #include <G4HadronPhysicsINCLXX.hh>
+// #include <G4VHadronPhysics.hh>
+
+
+
+// class variables begin with capital letters, local variables with small letters
+
+
+
+/**
+ *  Function to registers the physics that is needed for the G4ScintillatorTile%s and G4Wrapping. Therefor, registerPhysics() is used.
+ *  <b> It has to be processed before the <em> physicsList </em> is initialised by the G4RunManager (runManager->SetUserInitialization(physicsList);)! </b>
+ *
+ *  The following physics constructors are registered:
+ */
+void ScintillatorTileConstructor::LoadPhysicsList( G4VModularPhysicsList * physicsList,	/**< physics list which is used for the simulation */
+						   int verbose				/**< verbosity level for adding the needed physics processes (specified in OpticalCouplingPhysicsList) to the physics list (default: 0) */
+						 )
+{
+// specify the particles and physics processes to be created in the initialisation process
+
+/** <b> Standard EM Physics: </b> */
+	// http://geant4.web.cern.ch/geant4/collaboration/working_groups/electromagnetic/physlist9.5.shtml
+
+	/** - G4EmStandardPhysics (from 2005)
+	 *    - creates the following particles:
+	 *      - bosons:  G4Gamma
+	 *      - leptons: G4Electron, G4Positron, G4MuonPlus, G4MuonMinus
+	 *      - mesons:  G4PionPlus, G4PionMinus, G4KaonPlus, G4KaonMinus
+	 *      - baryons: G4Proton, G4AntiProton
+	 *      - ions:    G4Deuteron, G4Triton, G4He3, G4Alpha, G4GenericIon
+	 *    - and adds the following physical processes:
+	 *      - G4Gamma:								G4ComptonScattering, G4GammaConversion, G4PhotoElectricEffect
+	 *      - G4Electron:							G4eMultipleScattering, G4CoulombScattering, G4eIonisation, G4eBremsstrahlung
+	 *      - G4Positron:							G4eMultipleScattering, G4CoulombScattering, G4eIonisation, G4eBremsstrahlung, G4eplusAnnihilation
+	 *      - G4MuonPlus, G4MuonMinus:						G4MuMultipleScattering, G4MuIonisation, G4MuBremsstrahlung, G4MuPairProduction, G4CoulombScattering
+	 *      - G4PionPlus, G4PionMinus, G4KaonPlus, G4KaonMinus, G4Proton:	G4MuMultipleScattering, G4hBremsstrahlung, G4hIonisation, G4hPairProduction
+	 *      - G4He3, G4Alpha, G4GenericIon:					G4hMultipleScattering, G4ionIonisation
+	 *      - additionally (if the particles are created by other Physics Constructors):
+	 *        - G4TauPlus, G4TauMinus, G4BMesonMinus, G4BMesonPlus, G4DMesonMinus, G4DMesonPlus, G4DsMesonMinus, G4DsMesonPlus, G4AntiProton, G4Deuteron, G4AntiDeuteron, G4Triton, G4AntiTriton, G4AntiHe3, G4AntiAlpha, G4LambdacPlus, G4AntiLambdacPlus, G4OmegaMinus, G4AntiOmegaMinus, G4SigmacPlus, G4AntiSigmacPlus, G4SigmacPlusPlus, G4AntiSigmacPlusPlus, G4SigmaPlus, G4AntiSigmaPlus, G4SigmaMinus, G4AntiSigmaMinus, G4XicPlus, G4AntiXicPlus, G4XiMinus, G4AntiXiMinus: G4hMultipleScattering, G4hIonisation
+	 */
+	registerPhysics(physicsList, new G4EmStandardPhysics(verbose));
+
+
+
+/** <b> Low Energy Standard EM Physics: </b> */
+
+	/** - G4EmLowEPPhysics (from 2013)
+	 *    - creates the following particles:
+	 *      - bosons:  G4Gamma
+	 *      - leptons: G4Electron, G4Positron, G4MuonPlus, G4MuonMinus
+	 *      - mesons:  G4PionPlus, G4PionMinus, G4KaonPlus, G4KaonMinus
+	 *      - baryons: G4Proton, G4AntiProton
+	 *      - ions:    G4Deuteron, G4Triton, G4He3, G4Alpha, G4GenericIon
+	 *    - and adds the following physical processes (like G4EmStandardPhysics, but only for low energies with different models):
+	 *      - G4Gamma:								G4ComptonScattering, G4GammaConversion, G4PhotoElectricEffect
+	 *      - G4Electron:							G4eMultipleScattering, G4CoulombScattering, G4eIonisation, G4eBremsstrahlung
+	 *      - G4Positron:							G4eMultipleScattering, G4CoulombScattering, G4eIonisation, G4eBremsstrahlung, G4eplusAnnihilation
+	 *      - G4MuonPlus, G4MuonMinus:						G4MuMultipleScattering, G4MuIonisation, G4MuBremsstrahlung, G4MuPairProduction, G4CoulombScattering
+	 *      - G4PionPlus, G4PionMinus, G4KaonPlus, G4KaonMinus, G4Proton:	G4MuMultipleScattering, G4hBremsstrahlung, G4hIonisation, G4hPairProduction
+	 *      - G4He3, G4Alpha, G4GenericIon:					G4hMultipleScattering, G4ionIonisation, G4NuclearStopping
+	 *      - additionally (if the particles are created by other Physics Constructors):
+	 *        - G4TauPlus, G4TauMinus, G4BMesonMinus, G4BMesonPlus, G4DMesonMinus, G4DMesonPlus, G4DsMesonMinus, G4DsMesonPlus, G4AntiProton, G4Deuteron, G4AntiDeuteron, G4Triton, G4AntiTriton, G4AntiHe3, G4AntiAlpha, G4LambdacPlus, G4AntiLambdacPlus, G4OmegaMinus, G4AntiOmegaMinus, G4SigmacPlus, G4AntiSigmacPlus, G4SigmacPlusPlus, G4AntiSigmacPlusPlus, G4SigmaPlus, G4AntiSigmaPlus, G4SigmaMinus, G4AntiSigmaMinus, G4XicPlus, G4AntiXicPlus, G4XiMinus, G4AntiXiMinus: G4hMultipleScattering, G4hIonisation
+	 */
+	registerPhysics(physicsList, new G4EmLowEPPhysics(verbose));
+
+
+
+/** <b> Extra EM Physics </b> */
+
+	/** - G4EmExtraPhysics (from 2002)
+	 *    - creates the following particles:
+	 *      - bosons:  G4Gamma
+	 *      - leptons: G4Electron, G4Positron, G4MuonPlus, G4MuonMinus
+	 *    - and adds the following physical processes:
+	 *      - G4Gamma:                 G4PhotoNuclearProcess (G4BertiniElectroNuclearBuilder)
+	 *      - G4Electron:              G4SynchrotronRadiation, G4ElectronNuclearProcess (G4BertiniElectroNuclearBuilder)
+	 *      - G4Positron:              G4SynchrotronRadiation, G4PositronNuclearProcess (G4BertiniElectroNuclearBuilder)
+	 *      - G4MuonPlus, G4MuonMinus: G4MuonNuclearProcess
+	 */
+	// default (only G4PhotoNuclearProcess):
+// 	registerPhysics(physicsList, new G4EmExtraPhysics(verbose));
+
+	// to activate all physical processes:
+	G4EmExtraPhysics* emExtraPhysics = new G4EmExtraPhysics(verbose);
+	G4String activationString = "on";   // the usage of the following functions is really strange: one has to provide a G4String with value "on" as argument, just giving "on" as argument does not work...
+	emExtraPhysics->Synch(activationString);
+	emExtraPhysics->GammaNuclear(activationString);
+	emExtraPhysics->MuonNuclear(activationString);
+	registerPhysics(physicsList, emExtraPhysics);
+
+
+
+/** <b> Optical Physics </b> */
+
+	/** - G4OpticalPhysics (from 2009)
+	 *    - creates the following particles:
+	 *      - bosons:  G4OpticalPhoton
+	 *    - and adds the following physical processes to these particles:
+	 *      - G4OpAbsorption, G4OpRayleigh, G4OpMieHG, G4OpBoundaryProcess, G4OpWLS, G4Scintillation, G4Cerenkov
+	 */
+// 	registerPhysics(physicsList, new G4OpticalPhysics(verbose));
+	G4OpticalPhysics* opticalPhysics = new G4OpticalPhysics(verbose);
+	opticalPhysics->SetWLSTimeProfile("exponential");
+// Configure (G4OpticalProcessIndex, G4bool)
+   // Configure the physics constructor to use/not use a selected process. This method can only be called in PreInit> phase (before execution of ConstructProcess). The process is not added to particle's process manager and so it cannot be re-activated later in Idle> phase with the command /process/activate.
+// SetProcessVerbose (G4int, G4int)
+// SetMaxNumPhotonsPerStep (G4int)
+// SetMaxBetaChangePerStep (G4double)
+// SetScintillationYieldFactor (G4double)
+// SetScintillationExcitationRatio (G4double)
+   // Called to set the scintillation exciation ratio, needed when the scintillation level excitation is different for different types of particles. This overwrites the YieldRatio obtained from the G4MaterialPropertiesTable.
+// SetScintillationByParticleType (G4bool)
+// AddScintillationSaturation (G4EmSaturation *)
+// SetTrackSecondariesFirst (G4OpticalProcessIndex, G4bool)
+	opticalPhysics->SetFiniteRiseTime(true);
+	registerPhysics(physicsList, opticalPhysics);
+
+
+
+/** <b> Particle Decay Physics </b> */
+
+	/** - G4DecayPhysics (from 2002)
+	 *    - creates the following particles:
+	 *      - bosons:     G4BosonConstructor
+	 *      - leptons:    G4LeptonConstructor
+	 *      - mesons:     G4MesonConstructor
+	 *      - baryons:    G4BaryonConstructor
+	 *      - ions:       G4IonConstructor
+	 *      - resonances: G4ShortLivedConstructor
+	 *    - and adds the following physical processes:
+	 *      - all particles with finite life time: G4Decay
+	 */
+	registerPhysics(physicsList, new G4DecayPhysics(verbose));
+
+
+
+/** <b> Particle Stopping Physics </b> */
+
+	/** - G4StoppingPhysics (from 2013)
+	 *    - creates the following particles:
+	 *      - leptons: G4LeptonConstructor
+	 *      - mesons:  G4MesonConstructor
+	 *      - baryons: G4BaryonConstructor
+	 *    -  and adds the following physical processes:
+	 *      - G4AntiProton, G4AntiSigmaPlus:                                   G4HadronicAbsorptionFritiof
+	 *      - G4PionMinus, G4SigmaMinus, G4KaonMinus, G4OmegaMinus, G4XiMinus: G4HadronicAbsorptionBertini
+	 *      - G4MuonMinus:                                                     G4MuonMinusCapture
+	 */
+	registerPhysics(physicsList, new G4StoppingPhysics(verbose));
+
+
+
+/** <b> Ion Physics </b> */
+
+	/** - G4IonPhysics (from 2005)
+	 *    - creates the following particles:
+	 *      - ions:  G4IonConstructor
+	 *    - and adds the following physical processes:
+	 *      - G4Deuteron: G4DeuteronInelasticProcess
+	 *      - G4Triton:   G4TritonInelasticProcess
+	 *      - G4Alpha:    G4AlphaInelasticProcess
+	 */
+	registerPhysics(physicsList, new G4IonPhysics(verbose));
+
+	/** - G4IonElasticPhysics (from 2013)
+	 *    - creates the following particles:
+	 *      - mesons:  G4MesonConstructor
+	 *      - baryons: G4BaryonConstructor
+	 *      - ions:  G4IonConstructor
+	 *    - and adds the following physical processes:
+	 *      - ions: G4HadronElasticProcess
+	 */
+	registerPhysics(physicsList, new G4IonElasticPhysics(verbose));
+
+
+
+/** <b> Hadron Nuclear Elastic Scattering Physics </b> */
+
+	/** - G4ChargeExchangePhysics (from 2008)
+	 *    - creates the following particles:
+	 *      - mesons:  G4MesonConstructor
+	 *      - baryons: G4BaryonConstructor
+	 *    - and adds the following physical processes:
+	 *      - G4PionPlus, G4PionMinus, G4neutron, G4Proton: G4ChargeExchangeProcess (hadron nuclear elastic scattering)
+	 */
+	registerPhysics(physicsList, new G4ChargeExchangePhysics(verbose));
+
+
+
+/** <b> Hadron Elastic Scattering Physics </b> */
+
+	/** - G4HadronElasticPhysicsHP (from 2013)
+	 *    - creates the following particles:
+	 *      - mesons:  G4MesonConstructor
+	 *      - baryons: G4BaryonConstructor
+	 *      - ions: G4IonConstructor
+	 *    - and adds the following physical processes:
+	 *      - G4Neutron, G4AntiNeutron, G4Proton, G4AntiProton, G4PionPlus, G4PionMinus, G4KaonPlus, G4KaonMinus, G4Lambda, G4AntiLambda, G4SigmaMinus, G4AntiSigmaMinus, G4SigmaPlus, G4AntiSigmaPlus, G4XiMinus, G4AntiXiMinus, G4AntiXiZero (G4XiZero is missing!), G4OmegaMinus, G4AntiOmegaMinus, G4Alpha, G4Deuteron, G4Triton:  G4HadronElasticProcess (G4HadronElasticPhysics)
+	 */
+	registerPhysics(physicsList, new G4HadronElasticPhysicsHP());
+
+/* * or */
+
+	/* * - There are many more physics list using different models to describe hadronic elastic scattering:
+	 *    - G4HadronDElasticPhysics (from 2013)
+	 *    - G4HadronElasticPhysics (from 2013)
+	 *    - G4HadronElasticPhysicsLEND (from 2013)
+	 *    - G4HadronElasticPhysicsXS (from 2013)
+	 *    - G4HadronHElasticPhysics (from 2013)
+	 */
+
+/** <b> Hadron Inelastic Scattering Physics </b> */
+	// http://geant4.web.cern.ch/geant4/support/proc_mod_catalog/physics_lists/referencePL.shtml   &   http://geant4.web.cern.ch/geant4/support/proc_mod_catalog/physics_lists/useCases.shtml
+
+	/** - G4HadronPhysicsQGSP_BERT_HP (from 2013)
+	 *    - creates the following particles:
+	 *      - mesons:  G4MesonConstructor
+	 *      - baryons: G4BaryonConstructor
+	 *      - resonances: G4ShortLivedConstructor
+	 *      - ions:  G4IonConstructor
+	 *    - and adds the following physical processes:
+	 *      - G4Neutron:        G4HadronCaptureProcess, G4HadronFissionProcess, G4NeutronInelasticProcess (G4NeutronBuilder)
+	 *      - G4Proton:         G4ProtonInelasticProcess (G4ProtonBuilder)
+	 *      - G4PionPlus:       G4PionPlusInelasticProcess (G4PiKBuilder)
+	 *      - G4PionMinus:      G4PionMinusInelasticProcess (G4PiKBuilder)
+	 *      - G4KaonPlus:       G4KaonPlusInelasticProcess (G4PiKBuilder)
+	 *      - G4KaonMinus:      G4KaonMinusInelasticProcess (G4PiKBuilder)
+	 *      - G4KaonZeroLong:   G4KaonZeroLInelasticProcess (G4PiKBuilder)
+	 *      - G4KaonZeroShort:  G4KaonZeroSInelasticProcess (G4PiKBuilder)
+	 *      - G4AntiProton:     G4AntiProtonInelasticProcess (G4AntiBarionBuilder)
+	 *      - G4AntiNeutron:    G4AntiNeutronInelasticProcess (G4AntiBarionBuilder)
+	 *      - G4AntiDeuteron:   G4AntiDeuteronInelasticProcess (G4AntiBarionBuilder)
+	 *      - G4AntiTriton:     G4AntiTritonInelasticProcess (G4AntiBarionBuilder)
+	 *      - G4AntiHe3:        G4AntiHe3InelasticProcess (G4AntiBarionBuilder)
+	 *      - G4AntiAlpha:      G4AntiAlphaInelasticProcess (G4AntiBarionBuilder)
+	 *      - G4Lambda:         G4LambdaInelasticProcess (G4HyperonFTFPBuilder)
+	 *      - G4AntiLambda:     G4AntiLambdaInelasticProcess (G4HyperonFTFPBuilder)
+	 *      - G4SigmaMinus:     G4SigmaMinusInelasticProcess (G4HyperonFTFPBuilder)
+	 *      - G4AntiSigmaMinus: G4AntiSigmaMinusInelasticProcess (G4HyperonFTFPBuilder)
+	 *      - G4SigmaPlus:      G4SigmaPlusInelasticProcess (G4HyperonFTFPBuilder)
+	 *      - G4AntiSigmaPlus:  G4AntiSigmaPlusInelasticProcess (G4HyperonFTFPBuilder)
+	 *      - G4XiMinus:        G4XiMinusInelasticProcess (G4HyperonFTFPBuilder)
+	 *      - G4AntiXiMinus:    G4AntiXiMinusInelasticProcess (G4HyperonFTFPBuilder)
+	 *      - G4XiZero:         G4XiZeroInelasticProcess (G4HyperonFTFPBuilder)
+	 *      - G4AntiXiZero:     G4AntiXiZeroInelasticProcess (G4HyperonFTFPBuilder)
+	 *      - G4OmegaMinus:     G4OmegaMinusInelasticProcess (G4HyperonFTFPBuilder)
+	 *      - G4AntiOmegaMinus: G4AntiOmegaMinusInelasticProcess (G4HyperonFTFPBuilder)
+	 */
+	registerPhysics(physicsList, new G4HadronPhysicsQGSP_BERT_HP());
+
+/* * or */
+
+	/* * - There are many more physics list using different models to describe hadronic elastic scattering:
+	 *    - G4HadronPhysicsQGSP_FTFP_BERT (from 2009)
+	 *    - G4HadronPhysicsQGSP_BIC_HP (from 2013)
+	 *    - G4HadronPhysicsQGSP_BIC (from 2013)
+	 *    - G4HadronPhysicsQGSP_BERT (from 2013)
+	 *    - G4HadronPhysicsQGS_BIC (from 2013)
+	 *    - G4HadronPhysicsFTFP_BERT_TRV (from 2013)
+	 *    - G4HadronPhysicsFTFP_BERT_HP (from 2012)
+	 *    - G4HadronPhysicsFTFP_BERT (from 2013)
+	 *    - G4HadronPhysicsFTF_BIC (from 2013)
+	 *    - G4HadronPhysicsINCLXX (from 2013)
+	 *    - G4VHadronPhysics (from 2009)
+	 */
+}
+
+
+
+/**
+ *  Function that registers a physics constructor, if it has not already been registered.
+ */
+void ScintillatorTileConstructor::registerPhysics( G4VModularPhysicsList * physicsList,	/**< physics list which is used for the simulation */
+						   G4VPhysicsConstructor * physicsConstructor	/**< physics to be registered */
+						 )
+{
+	if(! physicsList->GetPhysics( physicsConstructor->GetPhysicsName() ) ) physicsList->RegisterPhysics(physicsConstructor);
+}

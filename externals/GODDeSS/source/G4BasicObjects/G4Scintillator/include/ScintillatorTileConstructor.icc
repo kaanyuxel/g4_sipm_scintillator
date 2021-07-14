@@ -1,0 +1,515 @@
+/*
+ * author:      Erik Dietz-Laursonn
+ * institution: Physics Institute 3A, RWTH Aachen University, Aachen, Germany
+ * copyright:   Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+ */
+
+
+// class variables begin with capital letters, local variables with small letters
+
+
+
+// These are the overloaded functions. They are calling the main function using default values for the parameters which are not specified.
+
+
+
+// option to create replications: the first object will be placed at transf_relative_to_reference, the other number_of_replications - 1 objects will be placed at replication_transf relative to the previous one
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4ScintillatorTile *> ConstructScintillators( G4ThreeVector scintillator_dimensions,
+						      G4String scintillator_property_file,
+						      G4VPhysicalVolume* mother_volume,
+						      G4int number_of_replications,
+						      G4Transform3D replication_transf )
+{
+	return ConstructScintillators( scintillator_dimensions,
+				       scintillator_property_file,
+				       mother_volume,
+				       number_of_replications,
+				       replication_transf,
+				       ScintillatorName,
+				       ScintillatorTransformation,
+				       ScintillatorReferenceVolume_physical,
+				       ReferenceVolume_transformation,
+				       ScintillatorCutDimple,
+				       ScintillatorDimpleRadius,
+				       ScintillatorDimpleCentrePosition,
+				       ScintillatorTwinTile,
+				       ScintillatorTwinTilePropertyFile,
+				       ConstructSensitiveDetector );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4ScintillatorTile *> ConstructScintillators( G4ThreeVector scintillator_dimensions,
+						      G4String scintillator_property_file,
+						      G4VPhysicalVolume* mother_volume,
+						      G4int number_of_replications,
+						      G4Transform3D replication_transf,
+						      G4String scintillator_name )
+{
+	return ConstructScintillators( scintillator_dimensions,
+				       scintillator_property_file,
+				       mother_volume,
+				       number_of_replications,
+				       replication_transf,
+				       scintillator_name,
+				       ScintillatorTransformation,
+				       ScintillatorReferenceVolume_physical,
+				       ReferenceVolume_transformation,
+				       ScintillatorCutDimple,
+				       ScintillatorDimpleRadius,
+				       ScintillatorDimpleCentrePosition,
+				       ScintillatorTwinTile,
+				       ScintillatorTwinTilePropertyFile,
+				       ConstructSensitiveDetector );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4ScintillatorTile *> ConstructScintillators( G4ThreeVector scintillator_dimensions,
+						      G4String scintillator_property_file,
+						      G4VPhysicalVolume* mother_volume,
+						      G4int number_of_replications,
+						      G4Transform3D replication_transf,
+						      G4String scintillator_name,
+						      G4Transform3D transf_relative_to_reference )
+{
+	return ConstructScintillators( scintillator_dimensions,
+				       scintillator_property_file,
+				       mother_volume,
+				       number_of_replications,
+				       replication_transf,
+				       scintillator_name,
+				       transf_relative_to_reference,
+				       ScintillatorReferenceVolume_physical,
+				       ReferenceVolume_transformation,
+				       ScintillatorCutDimple,
+				       ScintillatorDimpleRadius,
+				       ScintillatorDimpleCentrePosition,
+				       ScintillatorTwinTile,
+				       ScintillatorTwinTilePropertyFile,
+				       ConstructSensitiveDetector );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4ScintillatorTile *> ConstructScintillators( G4ThreeVector scintillator_dimensions,
+						      G4String scintillator_property_file,
+						      G4VPhysicalVolume* mother_volume,
+						      G4int number_of_replications,
+						      G4Transform3D replication_transf,
+						      G4String scintillator_name,
+						      G4Transform3D transf_relative_to_reference,
+						      G4VPhysicalVolume* reference_volume )
+{
+	return ConstructScintillators( scintillator_dimensions,
+				       scintillator_property_file,
+				       mother_volume,
+				       number_of_replications,
+				       replication_transf,
+				       scintillator_name,
+				       transf_relative_to_reference,
+				       reference_volume,
+				       ReferenceVolume_transformation,
+				       ScintillatorCutDimple,
+				       ScintillatorDimpleRadius,
+				       ScintillatorDimpleCentrePosition,
+				       ScintillatorTwinTile,
+				       ScintillatorTwinTilePropertyFile,
+				       ConstructSensitiveDetector );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4ScintillatorTile *> ConstructScintillators( G4ThreeVector scintillator_dimensions,
+						      G4String scintillator_property_file,
+						      G4VPhysicalVolume* mother_volume,
+						      G4int number_of_replications,
+						      G4Transform3D replication_transf,
+						      G4String scintillator_name,
+						      G4Transform3D transf_relative_to_reference,
+						      G4VPhysicalVolume* reference_volume,
+						      G4Transform3D reference_volume_transformation )
+{
+	return ConstructScintillators( scintillator_dimensions,
+				       scintillator_property_file,
+				       mother_volume,
+				       number_of_replications,
+				       replication_transf,
+				       scintillator_name,
+				       transf_relative_to_reference,
+				       reference_volume,
+				       reference_volume_transformation,
+				       ScintillatorCutDimple,
+				       ScintillatorDimpleRadius,
+				       ScintillatorDimpleCentrePosition,
+				       ScintillatorTwinTile,
+				       ScintillatorTwinTilePropertyFile,
+				       ConstructSensitiveDetector );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4ScintillatorTile *> ConstructScintillators( G4ThreeVector scintillator_dimensions,
+						      G4String scintillator_property_file,
+						      G4VPhysicalVolume* mother_volume,
+						      G4int number_of_replications,
+						      G4Transform3D replication_transf,
+						      G4String scintillator_name,
+						      G4Transform3D transf_relative_to_reference,
+						      G4VPhysicalVolume* reference_volume,
+						      G4Transform3D reference_volume_transformation,
+						      G4bool cut_dimple,
+						      G4double dimple_radius,
+						      G4ThreeVector dimple_centre_relative_to_scintillator_centre )
+{
+	return ConstructScintillators( scintillator_dimensions,
+				       scintillator_property_file,
+				       mother_volume,
+				       number_of_replications,
+				       replication_transf,
+				       scintillator_name,
+				       transf_relative_to_reference,
+				       reference_volume,
+				       reference_volume_transformation,
+				       cut_dimple,
+				       dimple_radius,
+				       dimple_centre_relative_to_scintillator_centre,
+				       ScintillatorTwinTile,
+				       ScintillatorTwinTilePropertyFile,
+				       ConstructSensitiveDetector );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+vector<G4ScintillatorTile *> ConstructScintillators( G4ThreeVector scintillator_dimensions,
+						      G4String scintillator_property_file,
+						      G4VPhysicalVolume* mother_volume,
+						      G4int number_of_replications,
+						      G4Transform3D replication_transf,
+						      G4String scintillator_name,
+						      G4Transform3D transf_relative_to_reference,
+						      G4VPhysicalVolume* reference_volume,
+						      G4Transform3D reference_volume_transformation,
+						      G4bool cut_dimple,
+						      G4double dimple_radius,
+						      G4ThreeVector dimple_centre_relative_to_scintillator_centre,
+						      G4bool twin_tile,
+						      G4String twin_tile_property_file )
+{
+	return ConstructScintillators( scintillator_dimensions,
+				       scintillator_property_file,
+				       mother_volume,
+				       number_of_replications,
+				       replication_transf,
+				       scintillator_name,
+				       transf_relative_to_reference,
+				       reference_volume,
+				       reference_volume_transformation,
+				       cut_dimple,
+				       dimple_radius,
+				       dimple_centre_relative_to_scintillator_centre,
+				       twin_tile,
+				       twin_tile_property_file,
+				       ConstructSensitiveDetector );
+}
+
+
+// option to only one object
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4ScintillatorTile * ConstructScintillator( G4ThreeVector scintillator_dimensions,
+					    G4String scintillator_property_file,
+					    G4VPhysicalVolume* mother_volume )
+{
+	return ConstructScintillator( scintillator_dimensions,
+				      scintillator_property_file,
+				      mother_volume,
+				      ScintillatorName,
+				      ScintillatorTransformation,
+				      ScintillatorReferenceVolume_physical,
+				      ReferenceVolume_transformation,
+				      ScintillatorCutDimple,
+				      ScintillatorDimpleRadius,
+				      ScintillatorDimpleCentrePosition,
+				      ScintillatorTwinTile,
+				      ScintillatorTwinTilePropertyFile,
+				      ConstructSensitiveDetector
+				    );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4ScintillatorTile * ConstructScintillator( G4ThreeVector scintillator_dimensions,
+					    G4String scintillator_property_file,
+					    G4VPhysicalVolume* mother_volume,
+					    G4String scintillator_name )
+{
+	return ConstructScintillator( scintillator_dimensions,
+				      scintillator_property_file,
+				      mother_volume,
+				      scintillator_name,
+				      ScintillatorTransformation,
+				      ScintillatorReferenceVolume_physical,
+				      ReferenceVolume_transformation,
+				      ScintillatorCutDimple,
+				      ScintillatorDimpleRadius,
+				      ScintillatorDimpleCentrePosition,
+				      ScintillatorTwinTile,
+				      ScintillatorTwinTilePropertyFile,
+				      ConstructSensitiveDetector
+				    );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4ScintillatorTile * ConstructScintillator( G4ThreeVector scintillator_dimensions,
+					    G4String scintillator_property_file,
+					    G4VPhysicalVolume* mother_volume,
+					    G4String scintillator_name,
+					    G4Transform3D transf_relative_to_reference )
+{
+	return ConstructScintillator( scintillator_dimensions,
+				      scintillator_property_file,
+				      mother_volume,
+				      scintillator_name,
+				      transf_relative_to_reference,
+				      ScintillatorReferenceVolume_physical,
+				      ReferenceVolume_transformation,
+				      ScintillatorCutDimple,
+				      ScintillatorDimpleRadius,
+				      ScintillatorDimpleCentrePosition,
+				      ScintillatorTwinTile,
+				      ScintillatorTwinTilePropertyFile,
+				      ConstructSensitiveDetector
+				    );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4ScintillatorTile * ConstructScintillator( G4ThreeVector scintillator_dimensions,
+					    G4String scintillator_property_file,
+					    G4VPhysicalVolume* mother_volume,
+					    G4String scintillator_name,
+					    G4Transform3D transf_relative_to_reference,
+					    G4VPhysicalVolume* reference_volume )
+{
+	return ConstructScintillator( scintillator_dimensions,
+				      scintillator_property_file,
+				      mother_volume,
+				      scintillator_name,
+				      transf_relative_to_reference,
+				      reference_volume,
+				      ReferenceVolume_transformation,
+				      ScintillatorCutDimple,
+				      ScintillatorDimpleRadius,
+				      ScintillatorDimpleCentrePosition,
+				      ScintillatorTwinTile,
+				      ScintillatorTwinTilePropertyFile,
+				      ConstructSensitiveDetector
+				    );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4ScintillatorTile * ConstructScintillator( G4ThreeVector scintillator_dimensions,
+					    G4String scintillator_property_file,
+					    G4VPhysicalVolume* mother_volume,
+					    G4String scintillator_name,
+					    G4Transform3D transf_relative_to_reference,
+					    G4VPhysicalVolume* reference_volume,
+					    G4Transform3D reference_volume_transformation )
+{
+	return ConstructScintillator( scintillator_dimensions,
+				      scintillator_property_file,
+				      mother_volume,
+				      scintillator_name,
+				      transf_relative_to_reference,
+				      reference_volume,
+				      reference_volume_transformation,
+				      ScintillatorCutDimple,
+				      ScintillatorDimpleRadius,
+				      ScintillatorDimpleCentrePosition,
+				      ScintillatorTwinTile,
+				      ScintillatorTwinTilePropertyFile,
+				      ConstructSensitiveDetector
+				    );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4ScintillatorTile * ConstructScintillator( G4ThreeVector scintillator_dimensions,
+					    G4String scintillator_property_file,
+					    G4VPhysicalVolume* mother_volume,
+					    G4String scintillator_name,
+					    G4Transform3D transf_relative_to_reference,
+					    G4VPhysicalVolume* reference_volume,
+					    G4Transform3D reference_volume_transformation,
+					    G4bool cut_dimple,
+					    G4double dimple_radius,
+					    G4ThreeVector dimple_centre_relative_to_scintillator_centre )
+{
+	return ConstructScintillator( scintillator_dimensions,
+				      scintillator_property_file,
+				      mother_volume,
+				      scintillator_name,
+				      transf_relative_to_reference,
+				      reference_volume,
+				      reference_volume_transformation,
+				      cut_dimple,
+				      dimple_radius,
+				      dimple_centre_relative_to_scintillator_centre,
+				      ScintillatorTwinTile,
+				      ScintillatorTwinTilePropertyFile,
+				      ConstructSensitiveDetector
+				    );
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4ScintillatorTile * ConstructScintillator( G4ThreeVector scintillator_dimensions,
+					    G4String scintillator_property_file,
+					    G4VPhysicalVolume* mother_volume,
+					    G4String scintillator_name,
+					    G4Transform3D transf_relative_to_reference,
+					    G4VPhysicalVolume* reference_volume,
+					    G4Transform3D reference_volume_transformation,
+					    G4bool cut_dimple,
+					    G4double dimple_radius,
+					    G4ThreeVector dimple_centre_relative_to_scintillator_centre,
+					    G4bool twin_tile,
+					    G4String twin_tile_property_file )
+{
+	return ConstructScintillator( scintillator_dimensions,
+				      scintillator_property_file,
+				      mother_volume,
+				      scintillator_name,
+				      transf_relative_to_reference,
+				      reference_volume,
+				      reference_volume_transformation,
+				      cut_dimple,
+				      dimple_radius,
+				      dimple_centre_relative_to_scintillator_centre,
+				      twin_tile,
+				      twin_tile_property_file,
+				      ConstructSensitiveDetector
+				    );
+}
+
+
+
+// option to only one object
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Wrapping * ConstructWrapping( G4ScintillatorTile* scinti_to_be_wrapped,
+				G4String wrapping_property_file
+			      )
+{
+	return ConstructWrapping(scinti_to_be_wrapped, wrapping_property_file, WrappingMotherVolume_physical, WrappingName, WrappingCutVolumes, ConstructSensitiveDetector);
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Wrapping * ConstructWrapping( G4ScintillatorTile* scinti_to_be_wrapped,
+				G4String wrapping_property_file,
+				G4VPhysicalVolume* mother_volume
+			      )
+{
+	return ConstructWrapping(scinti_to_be_wrapped, wrapping_property_file, mother_volume, WrappingName, WrappingCutVolumes, ConstructSensitiveDetector);
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Wrapping * ConstructWrapping( G4ScintillatorTile* scinti_to_be_wrapped,
+				G4String wrapping_property_file,
+				G4VPhysicalVolume* mother_volume,
+				G4String wrapping_name
+			      )
+{
+	return ConstructWrapping(scinti_to_be_wrapped, wrapping_property_file, mother_volume, wrapping_name, WrappingCutVolumes, ConstructSensitiveDetector);
+}
+
+/**
+ *  \overload
+ *  \n
+ *
+ *  The "missing" argument(s) can be set by the setter functions below, or the default values (SetDefaults()) are used.
+ */
+G4Wrapping * ConstructWrapping( G4ScintillatorTile* scinti_to_be_wrapped,
+				G4String wrapping_property_file,
+				G4VPhysicalVolume* mother_volume,
+				G4String wrapping_name,
+				std::vector<G4VPhysicalVolume *> cut_volumes
+			      )
+{
+	return ConstructWrapping(scinti_to_be_wrapped, wrapping_property_file, mother_volume, wrapping_name, cut_volumes, ConstructSensitiveDetector);
+}

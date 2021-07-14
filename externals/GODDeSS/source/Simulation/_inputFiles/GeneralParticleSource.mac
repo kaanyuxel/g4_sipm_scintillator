@@ -1,0 +1,57 @@
+#############
+# Verbosity #
+#############
+
+	/gps/verbose	0
+	/gps/outFile	outputParticleSource.data
+
+###############################
+# Primary particle definition #
+###############################
+
+	/gps/particle			mu		# Set the type of the incoming primary particle. If not defined differently (e.g. mu+), the incoming primary particle will
+							#    alternately be a particle or an anti-particle, starting with a particle in every run. (default: opticalphoton)
+###	/gps/polar			-360 deg	# For optical photons, ?????? (default: -360 deg   possible units: mrad, rad, deg)
+###	/gps/energy/eMin			279 MeV		# Set the minimal KINETIC energy of the incoming primary particle. (default: 1.0 eV   possible units: eV, keV, MeV, GeV, TeV, PeV)
+###	/gps/energy/eMax			279 MeV		# Set the maximal KINETIC energy of the incoming primary particle. (default: 10.0 eV   possible units: eV, keV, MeV, GeV, TeV, PeV)
+	/gps/energy/betaGammaMin	3.5		# Alternatively, set the minimal KINETIC energy of the incoming primary particle via its beta*gamma.
+							#    When doing so, any /gps/energy/eMin input will be ignored. (default: -1.)
+	/gps/energy/betaGammaMax	3.5		# Alternatively, set the maximal KINETIC energy of the incoming primary particle via its beta*gamma.
+							#    When doing so, any /gps/energy/eMax input will be ignored. (default: -1.)
+###	/gps/energy/diceBetaGamma	true		# Dice the particle's beta*gamma values instead of its KINETIC energy.
+
+#########################
+# Particle source plane #
+#########################
+
+					# possible units: nm, um, mm, cm, m, km, pc
+	/gps/plane/pos			0 100 0 mm	# Set the position of the plane in which the primary particles will be created. (default: 0 0 5 cm)
+	/gps/plane/surfaceNormal		0 -1 0		# Set the surface normal of the plane in which the primary particles will be created. (default: 0 0 -1)
+###	/gps/plane/shift			5. mm		# range that the source plane shifts (+/-) along the surface normal (default: 0 mm)
+	/gps/plane/shape			rect		# Set the shape of the plane in which the primary particles will be created. Possible values are "circle", "rect" or "hexagon". (default: circle)
+###	/gps/plane/centerOrientated	true		# Set if the particles should be directed at the center of the plane (only for "circle" shape; default: false)
+							#    If true, thetaMin and thetaMax vary the particles direction within the source plane (also negative values are possible),
+							#    phiMin and phiMax vary the particles direction out of the source plane.
+###	/gps/plane/rMin			0 mm		# If the shape of the plane in which the primary particles will be created is "circle", set its minimal radius. (default: 0 mm)
+###	/gps/plane/rMax			0.47 mm		# If the shape of the plane in which the primary particles will be created is "circle", set its maximal radius. (default: 0.5 mm)
+	/gps/plane/a			0 mm		# If the shape of the plane in which the primary particles will be created is "rect", set its edge length in x direction. (default: 1 mm)
+	/gps/plane/b			0 mm		# If the shape of the plane in which the primary particles will be created is "rect", set its edge length in y direction. (default: 1 mm)
+###	/gps/plane/posDist		grid		# Set the distribution of the primary particles. Possible values are "uniform" or "grid". (default: uniform)
+###	/gps/plane/posGridDistA		0.01 mm
+
+##############################################
+# Angular distibution of particle directions #
+##############################################
+
+					# possible units: mrad, rad, deg (negative values possible)
+					# different effects, if /gps/plane/centerOrientated is true (cf. /gps/plane/centerOrientated)
+	/gps/angle/thetaMin	0 deg	# Set the minimal theta angle (spherical coordinates) of the primary particle's direction with respect to the surface normal. (default: 0 deg)
+	/gps/angle/thetaMax	0 deg	# Set the maximal theta angle (spherical coordinates) of the primary particle's direction with respect to the surface normal. (default: 90 deg)
+	/gps/angle/phiMin	0 deg	# Set the minimal phi angle (spherical coordinates) of the primary particle's direction. (default: 0 deg)
+	/gps/angle/phiMax	0 deg	# Set the maximal phi angle (spherical coordinates) of the primary particle's direction. (default: 360 deg)
+
+
+
+				# possible units: ns, ms, s
+###	/gps/tMin	0
+###	/gps/tMax	0
