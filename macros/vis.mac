@@ -10,4 +10,4 @@
 /vis/viewer/set/viewpointThetaPhi 69.0427  131.836  deg
 /vis/viewer/set/targetPoint 13 13 8 cm
 
-/run/beamOn 10
+#/run/beamOn 10
