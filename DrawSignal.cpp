@@ -1,4 +1,4 @@
-void DrawHist(){
+void DrawSignal(){
    TFile *f    = new TFile("time.root");
    TTree *tree = (TTree *) f->Get("test");
    TH2F *hist_signal_1  = new TH2F("hist_signal_1","Original Distribution;Time[ns];Voltage[mV]",250, 0, 500, 350, 0, 900);
