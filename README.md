@@ -31,4 +31,34 @@ The programs below have to be installed before running the example. Otherwise, t
 
 ## How to install and run g4_sipm_scintillator
 
+If you already installed all the requirements, you can install and run the example. Let's start with cloning the code,
+```
+git clone https://github.com/kaanyuxel/g4_sipm_scintillator.git
+```
+Then, create folder with a name *build* inside of g4_sipm_scintillator and access that folder;
+```
+cd g4_sipm_scintillator
+mkdir build
+cd build
+```
+Finally you can install it with typing following commands,
+```
+cmake ..
+make -j4
+```
+If it compiles without any error, it creates a executable called *sipm_scintillator_app* and you can run it;
+```
+./sipm_scintillator_app
+```
+It will open a Qt window and one can see two scintillator planes with a seperation. In order to start experiment, type the following command on *Qt Session* line;
+```
+run/beamOn 1
+```
+This command will send one 5 GeV muon to scintillator planes. If you want to send more, you just type *run/beamOn N*(N is how much you want). At the end of run, you can see the root file with a name *time.root* which contains signal related branches. 
+
 ## Check Results with Simple C++ Macro
+To see the produced signals by SiPMs, you can run the macro which is called *DrawSignal.cpp* with a command;
+```
+root -l DrawSignal.cpp
+```
+It opens two canvases (one shows the signals with dots and the other with lines) and the signals can be seen on produced canvases. 
