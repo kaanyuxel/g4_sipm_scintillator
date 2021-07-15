@@ -54,7 +54,7 @@ It will open a Qt window and one can see two scintillator planes with a seperati
 ```
 run/beamOn 1
 ```
-This command will send one 5 GeV muon to scintillator planes. If you want to send more, you just type *run/beamOn N*(N is how much you want). At the end of run, you can see the root file with a name *time.root* which contains signal related branches. 
+This command will send one 5 GeV muon to scintillator planes. If you want to send more, you just type *run/beamOn N* (N is how much you want). At the end of run, you can see the ROOT file with a name *time.root* which contains signal related branches. 
 
 ## Check Results with Simple C++ Macro
 To see the produced signals by SiPMs, you can run the macro which is called *DrawSignal.cpp* with a command;
